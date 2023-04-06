@@ -19,6 +19,7 @@ def creat_app():
     bcrypt.init_app(app)
     migrate.init_app(app, db, render_as_batch=True)
 
+    from app.routes import MyMainView
     admin = Admin(app, 'Sam creat', index_view=MyMainView(), template_mode='bootstrap4', url='/')
 
     return app
