@@ -9,6 +9,6 @@ from models import Post
 class MyMainView(AdminIndexView):
     @expose('/')
     def admin_main(self):
-        post = Post.query.order_by(Post.date).all()
+        posts = Post.query.order_by(desc(Post.date)).all()
         image = url_for('static', filename=f'storage/post_img')
-        return self.render('admin/index.html', post=post, image=image)
+        return self.render('admin/index.html', posts=posts, image=image)
